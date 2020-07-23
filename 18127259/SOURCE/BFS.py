@@ -10,6 +10,7 @@ def breadth_first_search(graph, start, goal):
     node = (start, None)    # node = (state, parent's state)
     explored = []
     frontier = deque([node])
+    visited[node[0]] = True
 
     if node[0] == goal:
         explored.append(node)
@@ -18,7 +19,6 @@ def breadth_first_search(graph, start, goal):
     while frontier:
         node = frontier.popleft()
         explored.append(node)
-        visited[node[0]] = True
 
         child_state_list = sorted(graph[node[0]])
         for child_state in child_state_list:
@@ -29,7 +29,7 @@ def breadth_first_search(graph, start, goal):
                 frontier.append((child_state, node[0]))
                 visited[child_state] = True
 
-    return None, explored, None
+    return None, None, None
 
 
 def get_path(explored):
