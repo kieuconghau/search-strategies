@@ -16,3 +16,6 @@ if graph is None:
 else:
     time, explored_nodes, path = breadth_first_search(graph, start, goal)
     print_solution("Breadth-first search", start, goal, time, explored_nodes, path)
+
+    time, explored_nodes, path = uniform_cost_search(graph, start, goal)
+    print_solution("Uniform-cost search", start, goal, time, explored_nodes, path)
