@@ -24,8 +24,9 @@ def print_solution(search_stratey, start, goal, time, explored_nodes, path):
     print(search_stratey + " (Start: " + str(start) + "; Goal: " + str(goal) + ")")
 
     if time is None:
-        print("Can not find the path to escape this maze.")
+        print("Result: Can not find the path to escape this maze.")
     else:
+        print("Result:")
         print(" - The time to escape the maze: ", end="")
         print(time)
         print(" - The list of explored nodes: ", end="")
