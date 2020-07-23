@@ -3,47 +3,45 @@
 from collections import deque
 
 def breadth_first_search(graph, start, goal):
-    explored = [[], []]
-    frontier = [deque(), deque()]
-    state, parent = start, None
+    visited = dict()
+    for state in graph:
+        visited[state] = False
 
-    if state == goal:
-        explored[0].append(state)
-        explored[1].append(parent)
-        return len(explored[0]), explored[0], get_path(explored)
+    node = (start, None)    # node = (state, parent's state)
+    explored = []
+    frontier = deque([node])
 
-    frontier[0].append(state)
-    frontier[1].append(parent)
+    if node[0] == goal:
+        explored.append(node)
+        return len(explored), [node[0] for node in explored], get_path(explored)
 
-    while frontier[0]:
-        state, parent = frontier[0].popleft(), frontier[1].popleft()
-        explored[0].append(state)
-        explored[1].append(parent)
+    while frontier:
+        node = frontier.popleft()
+        explored.append(node)
+        visited[node[0]] = True
 
-        neighbor_state_list = sorted(graph[state])
-        for neighbor_state in neighbor_state_list:
-            if (neighbor_state not in explored[0]) and (neighbor_state not in frontier[0]):
-                if neighbor_state == goal:
-                    explored[0].append(neighbor_state)
-                    explored[1].append(state)
-                    return len(explored[0]), explored[0], get_path(explored)
-                frontier[0].append(neighbor_state)
-                frontier[1].append(state)
+        child_state_list = sorted(graph[node[0]])
+        for child_state in child_state_list:
+            if not visited[child_state]:
+                if child_state == goal:
+                    explored.append((child_state, node[0]))
+                    return len(explored), [node[0] for node in explored], get_path(explored)
+                frontier.append((child_state, node[0]))
+                visited[child_state] = True
 
-    return None, explored[0], None
+    return None, explored, None
 
 
 def get_path(explored):
     parent_table = dict()
+    for node in explored:
+        parent_table[node[0]] = node[1]
 
-    for i in range(len(explored[0])):
-        parent_table[explored[0][i]] = explored[1][i]
-
-    state, parent = explored[0][-1], explored[1][-1]
+    state, parent_state = explored[-1][0], explored[-1][1]
     path = deque([state])
-    while parent is not None:
-        state = parent
-        parent = parent_table[state]
+    while parent_state is not None:
+        state = parent_state
+        parent_state = parent_table[state]
         path.appendleft(state)
 
     return list(path)
