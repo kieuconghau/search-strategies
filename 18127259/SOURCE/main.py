@@ -19,3 +19,6 @@ else:
 
     time, explored_nodes, path = uniform_cost_search(graph, start, goal)
     print_solution("Uniform-cost search", start, goal, time, explored_nodes, path)
+
+    time, explored_nodes, path = greedy_best_first_search(graph, start, goal)
+    print_solution("Greedy-best first search", start, goal, time, explored_nodes, path)
