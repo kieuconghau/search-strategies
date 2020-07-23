@@ -22,3 +22,6 @@ else:
 
     time, explored_nodes, path = greedy_best_first_search(graph, start, goal)
     print_solution("Greedy-best first search", start, goal, time, explored_nodes, path)
+
+    time, explored_nodes, path = tree_search_a(graph, start, goal)
+    print_solution("Tree-search A*", start, goal, time, explored_nodes, path)
