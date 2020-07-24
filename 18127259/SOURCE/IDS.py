@@ -7,14 +7,15 @@ def iterative_deepening_search(graph, start, goal):
 
     while True:
         r_time, r_explored_nodes, r_path = depth_limited_tree_search(graph, start, goal, depth)
+
+        if r_time is None:                              # failure
+            return None, None, None
+
         explore_nodes_list.append(r_explored_nodes)
         time += r_time
-
         depth += 1
-        
-        if r_time is None:                                      # failure
-            return None, None, None
-        elif r_path is not None:                                # solution
+
+        if r_path is not None:                          # solution
             return time, explore_nodes_list, r_path
 
 

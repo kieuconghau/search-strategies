@@ -33,7 +33,7 @@ def print_solution(search_stratey, start, goal, time, explored_nodes, path):
         print(explored_nodes)
         print(" - The list of nodes on the path found: ", end="")
         print(path)
-        print()
+    print()
 
 
 # Print the maze solution to the console for IDS
@@ -53,4 +53,4 @@ def print_solution_ids(start, goal, time, explored_nodes_list, path):
             print(explored_nodes_list[depth])
         print(" - The list of nodes on the path found: ", end="")
         print(path)
-        print()
+    print()

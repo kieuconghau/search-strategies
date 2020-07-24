@@ -21,7 +21,8 @@ def tree_search_a(graph, start, goal):
         frequency[state] = 0
 
     frontier.put(node)
-    while frontier:
+
+    while frontier.queue:
         node = frontier.get()
         explored.append((node[1], node[2]))
 

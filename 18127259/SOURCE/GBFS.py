@@ -23,7 +23,8 @@ def greedy_best_first_search(graph, start, goal):
 
     frontier.put(node)
     visited[node[1]] = V.FRONTIER
-    while frontier:
+
+    while frontier.queue:
         node = frontier.get()
         explored.append((node[1], node[2]))
         visited[node[1]] = V.EXPLORED
