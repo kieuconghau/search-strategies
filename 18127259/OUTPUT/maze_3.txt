@@ -1,0 +1,14 @@
+Breadth-first search (Start: 0; Goal: 61)
+Result: Can not find the path to escape this maze.
+
+Uniform-cost search (Start: 0; Goal: 61)
+Result: Can not find the path to escape this maze.
+
+Iterative deepening search (Start: 0; Goal: 61)
+Result: Can not find the path to escape this maze.
+
+Greedy-best first search (Start: 0; Goal: 61)
+Result: Can not find the path to escape this maze.
+
+Tree-search A* (Start: 0; Goal: 61)
+Result: Can not find the path to escape this maze.
