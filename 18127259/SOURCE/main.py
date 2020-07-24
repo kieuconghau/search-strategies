@@ -25,3 +25,6 @@ else:
 
     time, explored_nodes, path = tree_search_a(graph, start, goal)
     print_solution("Tree-search A*", start, goal, time, explored_nodes, path)
+
+    time, explored_nodes_list, path = iterative_deepening_search(graph, start, goal)
+    print_solution_ids(start, goal, time, explored_nodes_list, path)
