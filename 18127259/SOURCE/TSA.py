@@ -7,11 +7,15 @@ from collections import deque
 
 
 class V(enum.Enum):
-    NOT_VISITED = 0
-    FRONTIER = 1
-    EXPLORED = 2
+    NOT_VISITED = 0             # state is not visited yet
+    FRONTIER = 1                # state is in frontier
+    EXPLORED = 2                # state is explored already
 
 
+# Tree-search A* (TSA for short)
+# Input:  the maze's info as a graph, start state, goal state
+# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+#         - failure: None, None, None
 def tree_search_a(graph, start, goal):
     node = (manhattan_distance(graph, start, goal), (start, 0), (None, 0))    # node = (Manhattan distance, state, parent's state)
     frontier = queue.PriorityQueue()
@@ -27,7 +31,7 @@ def tree_search_a(graph, start, goal):
         explored.append((node[1], node[2]))
 
         if node[1][0] == goal:
-            return len(explored), [node[0][0] for node in explored], get_path(explored)
+            return len(explored), [node[0][0] for node in explored], get_path(explored)     # success
 
         child_state_list = sorted(graph[node[1][0]])
         for child_state in child_state_list:
@@ -37,9 +41,12 @@ def tree_search_a(graph, start, goal):
                 frontier.put((node[0] - h_state + 1 + h_child_state, (child_state, frequency[child_state]), node[1]))
                 frequency[child_state] += 1
 
-    return None, None, None
+    return None, None, None     # failure
 
 
+# Get a path from the list of explored nodes
+# Input:  the list of explored nodes with the corresponding parents (node, node's parent)
+# Return: the list of nodes on the path found
 def get_path(explored):
     parent_table = dict()
     for node in explored:
@@ -55,6 +62,9 @@ def get_path(explored):
     return list(path)
 
 
+# Calculate the Manhattan distance (heuristic) of a state
+# Input:  the maze's info as a graph, the state that you want to calculate its Manhattan distance, goal state
+# Return: the Manhattan distance of the state
 def manhattan_distance(graph, state, goal):
     n = math.sqrt(len(graph))
     state_x, state_y = int(state / n), state % n
