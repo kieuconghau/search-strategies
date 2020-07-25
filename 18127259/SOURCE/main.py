@@ -7,7 +7,7 @@ from GBFS import *
 from TSA import *
 from IOHandle import *
 
-input_file_name = r"../INPUT/maze_0.txt"
+input_file_name = r"../INPUT/maze_0.txt"        # Change your input text file here
 
 graph, start, goal = read_maze(input_file_name)
 
