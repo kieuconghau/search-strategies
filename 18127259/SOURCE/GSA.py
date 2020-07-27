@@ -7,23 +7,23 @@ from collections import deque
 
 
 class V(enum.Enum):
-    NOT_VISITED = 0         # state is not visited yet
-    FRONTIER = 1            # state is in frontier
-    EXPLORED = 2            # state is explored already
+    NOT_VISITED = 0     # state is not visited yet
+    FRONTIER = 1        # state is in frontier
+    EXPLORED = 2        # state is explored already
 
 
 """
-Greedy-best first search (GBFS for short)
+Graph-search A* (GSA for short)
 Input:  the maze's info as a graph, start state, goal state
 Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
         - failure: None, None, None
 """
-def greedy_best_first_search(graph, start, goal):
+def graph_search_a(graph, start, goal):
     visited = dict()
     for state in graph:
         visited[state] = V.NOT_VISITED
 
-    node = (manhattan_distance(graph, start, goal), start, None)    # node = (Manhattan distance, state, parent's state)
+    node = (manhattan_distance(graph, start, goal), start, None)     # node = (path cost, state, parent's state)
     frontier = queue.PriorityQueue()
     explored = []
 
@@ -36,15 +36,18 @@ def greedy_best_first_search(graph, start, goal):
         visited[node[1]] = V.EXPLORED
 
         if node[1] == goal:
-            return len(explored), [node[0] for node in explored], get_path(explored)    # success
+            return len(explored), [ex_node[0] for ex_node in explored], get_path(explored)    # success
 
         child_state_list = sorted(graph[node[1]])
         for child_state in child_state_list:
+            h_state = manhattan_distance(graph, node[1], goal)
+            h_child_state = manhattan_distance(graph, child_state, goal)
+
             if visited[child_state] == V.NOT_VISITED:
-                frontier.put((manhattan_distance(graph, child_state, goal), child_state, node[1]))
+                frontier.put((node[0] - h_state + 1 + h_child_state, child_state, node[1]))
                 visited[child_state] = V.FRONTIER
             elif visited[child_state] == V.FRONTIER:
-                update(frontier, (manhattan_distance(graph, child_state, goal), child_state, node[1]))
+                update(frontier, (node[0] - h_state + 1 + h_child_state, child_state, node[1]))
 
     return None, None, None     # failure
 
@@ -69,8 +72,8 @@ def get_path(explored):
     return list(path)
 
 
-"""
-Update a node with the lower cost in the frontier
+""""
+Update  a node with the lower cost in the frontier
 Input:  a froniter, a node.state that you want to update
 Return: <update or no update>
 """

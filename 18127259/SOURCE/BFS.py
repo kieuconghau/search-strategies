@@ -2,10 +2,13 @@
 
 from collections import deque
 
-# Breadth-first search (BFS for short)
-# Input:  the maze's info as a graph, start state, goal state
-# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
-#         - failure: None, None, None
+
+"""
+Breadth-first search (BFS for short)
+Input:  the maze's info as a graph, start state, goal state
+Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+        - failure: None, None, None
+"""
 def breadth_first_search(graph, start, goal):
     visited = dict()
     for state in graph:
@@ -36,9 +39,11 @@ def breadth_first_search(graph, start, goal):
     return None, None, None     # failure
 
 
-# Get a path from the list of explored nodes
-# Input:  the list of explored nodes with the corresponding parents (node, node's parent)
-# Return: the list of nodes on the path found
+"""
+Get a path from the list of explored nodes
+Input:  the list of explored nodes with the corresponding parents (node, node's parent)
+Return: the list of nodes on the path found
+"""
 def get_path(explored):
     parent_table = dict()
     for node in explored:

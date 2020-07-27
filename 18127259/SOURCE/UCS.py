@@ -11,10 +11,12 @@ class V(enum.Enum):
     EXPLORED = 2        # state is explored already
 
 
-# Uniform-cost search (UCS for short)
-# Input:  the maze's info as a graph, start state, goal state
-# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
-#         - failure: None, None, None
+"""
+Uniform-cost search (UCS for short)
+Input:  the maze's info as a graph, start state, goal state
+Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+        - failure: None, None, None
+"""
 def uniform_cost_search(graph, start, goal):
     visited = dict()
     for state in graph:
@@ -46,9 +48,11 @@ def uniform_cost_search(graph, start, goal):
     return None, None, None     # failure
 
 
-# Get a path from the list of explored nodes
-# Input:  the list of explored nodes with the corresponding parents (node, node's parent)
-# Return: the list of nodes on the path found
+"""
+Get a path from the list of explored nodes
+Input:  the list of explored nodes with the corresponding parents (node, node's parent)
+Return: the list of nodes on the path found
+"""
 def get_path(explored):
     parent_table = dict()
     for node in explored:
@@ -64,9 +68,11 @@ def get_path(explored):
     return list(path)
 
 
-# Update  a node with the lower cost in the frontier
-# Input:  a froniter, a node.state that you want to update
-# Return: <update or no update>
+"""
+Update  a node with the lower cost in the frontier
+Input:  a froniter, a node.state that you want to update
+Return: <update or no update>
+"""
 def update(frontier, node):
     for f_node in frontier.queue:
         if f_node[1] == node[1] and f_node[0] > node[0] + 1:

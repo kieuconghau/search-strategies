@@ -1,9 +1,11 @@
 #  Copyright (c) 2020 Kieu Cong Hau
 
-# Iterative deepening search (IDS for short)
-# Input:  the maze's info as a graph, start state, goal state
-# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
-#         - failure: None, None, None
+"""
+Iterative deepening search (IDS for short)
+Input:  the maze's info as a graph, start state, goal state
+Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+        - failure: None, None, None
+"""
 def iterative_deepening_search(graph, start, goal):
     depth = 0
     time = 0
@@ -23,11 +25,13 @@ def iterative_deepening_search(graph, start, goal):
             return time, explore_nodes_list, r_path     # solution
 
 
-# Depth limited tree search (DLTS for short)
-# Input:  the maze's info as a graph, start state, goal state, limit depth
-# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
-#         - cutoff:  the time to try to escape the maze within the limit depth, the list of explored nodes, None
-#         - failure: None, None, None
+"""
+Depth limited tree search (DLTS for short)
+Input:  the maze's info as a graph, start state, goal state, limit depth
+Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+        - cutoff:  the time to try to escape the maze within the limit depth, the list of explored nodes, None
+        - failure: None, None, None
+"""
 def depth_limited_tree_search(graph, start, goal, depth):
     if start == goal:
         return 1, [start], [start]
@@ -41,13 +45,15 @@ def depth_limited_tree_search(graph, start, goal, depth):
     return recursive_depth_limited_tree_search(graph, start, goal, depth, explored, current_path, on_current_path)
 
 
-# Recursive depth limited tree search (RDLTS for short): Help the DLTS algorithm to explore nodes recursively.
-# Input:  the maze's info as a graph, start state, goal state, limit depth,
-#         the list of explored nodes, the list of nodes on the current path,
-#         the dictionary for checking if a node is on the currentpath
-# Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
-#         - cutoff:  the time to try to escape the maze within the limit depth, the list of explored nodes, None
-#         - failure: None, None, None
+"""
+Recursive depth limited tree search (RDLTS for short): Help the DLTS algorithm to explore nodes recursively.
+Input:  the maze's info as a graph, start state, goal state, limit depth,
+        the list of explored nodes, the list of nodes on the current path,
+        the dictionary for checking if a node is on the currentpath
+Return: - success: the time to escape the maze, the list of explored nodes, the list of nodes on the path found
+        - cutoff:  the time to try to escape the maze within the limit depth, the list of explored nodes, None
+        - failure: None, None, None
+"""
 def recursive_depth_limited_tree_search(graph, state, goal, depth, explored, current_path, on_current_path):
     explored.append(state)
     current_path.append(state)

@@ -1,18 +1,15 @@
 Breadth-first search (Start: 0; Goal: 61)
 Result:
- - The time to escape the maze: 51 minutes
  - The list of explored nodes: [0, 1, 8, 2, 9, 16, 10, 17, 24, 18, 25, 19, 26, 11, 20, 27, 3, 28, 35, 4, 29, 34, 36, 5, 30, 37, 33, 6, 31, 32, 23, 39, 40, 15, 38, 47, 48, 7, 14, 46, 55, 56, 13, 45, 63, 57, 12, 21, 44, 53, 61]
  - The list of nodes on the path found: [0, 1, 2, 10, 18, 19, 20, 28, 29, 30, 31, 39, 38, 46, 45, 53, 61]
 
 Uniform-cost search (Start: 0; Goal: 61)
 Result:
- - The time to escape the maze: 58 minutes
  - The list of explored nodes: [0, 1, 8, 2, 9, 16, 10, 17, 24, 18, 25, 19, 26, 11, 20, 27, 3, 28, 35, 4, 29, 34, 36, 5, 30, 33, 37, 6, 31, 32, 23, 39, 40, 15, 38, 47, 48, 7, 14, 46, 55, 56, 13, 45, 57, 63, 12, 21, 44, 53, 58, 62, 22, 43, 52, 54, 59, 61]
  - The list of nodes on the path found: [0, 1, 2, 10, 18, 19, 20, 28, 29, 30, 31, 39, 38, 46, 45, 53, 61]
 
 Iterative deepening search (Start: 0; Goal: 61)
 Result:
- - The time to escape the maze: 488 minutes
  - The list of explored nodes: 
    * depth = 0: [0]
    * depth = 1: [0, 1, 8]
@@ -35,12 +32,10 @@ Result:
 
 Greedy-best first search (Start: 0; Goal: 61)
 Result:
- - The time to escape the maze: 21 minutes
  - The list of explored nodes: [0, 1, 2, 10, 18, 19, 20, 28, 29, 37, 36, 30, 35, 27, 31, 39, 38, 46, 45, 53, 61]
  - The list of nodes on the path found: [0, 1, 2, 10, 18, 19, 20, 28, 29, 30, 31, 39, 38, 46, 45, 53, 61]
 
-Tree-search A* (Start: 0; Goal: 61)
+Graph-search A* (Start: 0; Goal: 61)
 Result:
- - The time to escape the maze: 42 minutes
- - The list of explored nodes: [0, 1, 2, 8, 9, 10, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 35, 36, 37, 37, 11, 29, 30, 34, 36, 3, 4, 5, 28, 30, 31, 33, 35, 39, 38, 46, 45, 47, 53, 55, 61]
+ - The list of explored nodes: [0, 1, 2, 8, 9, 10, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 35, 36, 37, 11, 30, 34, 3, 4, 5, 31, 33, 39, 38, 46, 45, 47, 53, 55, 61]
  - The list of nodes on the path found: [0, 1, 2, 10, 18, 19, 20, 28, 29, 30, 31, 39, 38, 46, 45, 53, 61]

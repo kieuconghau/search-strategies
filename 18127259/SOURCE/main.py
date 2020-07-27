@@ -1,13 +1,13 @@
 #  Copyright (c) 2020 Kieu Cong Hau
 
-from BFS import *
-from UCS import *
-from IDS import *
-from GBFS import *
-from TSA import *
+from BFS import breadth_first_search
+from UCS import uniform_cost_search
+from IDS import iterative_deepening_search
+from GBFS import greedy_best_first_search
+from GSA import graph_search_a
 from IOHandle import *
 
-input_file_name = r"../INPUT/maze_0.txt"        # Change your input text file here
+input_file_name = r"../INPUT/maze_3.txt"        # Change your input text file here
 
 graph, start, goal = read_maze(input_file_name)
 
@@ -26,5 +26,5 @@ else:
     time, explored_nodes, path = greedy_best_first_search(graph, start, goal)
     print_solution("Greedy-best first search", start, goal, time, explored_nodes, path)
 
-    time, explored_nodes, path = tree_search_a(graph, start, goal)
-    print_solution("Tree-search A*", start, goal, time, explored_nodes, path)
+    time, explored_nodes, path = graph_search_a(graph, start, goal)
+    print_solution("Graph-search A*", start, goal, time, explored_nodes, path)
