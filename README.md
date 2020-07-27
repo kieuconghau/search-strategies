@@ -8,7 +8,7 @@ Course: Artificial Intelligence - HCMUS
 ## Problem description
 A robot has been sent to a maze of size 𝑁 × 𝑁 and it must navigate the maze to reach the exit. Given that the robot has the map of the maze and it knows that its initial location is at square 0 and needs to reach some square E (from 0 to 𝑁<sup>2</sup> − 1) to go out of the maze. The below figure demonstrates a maze of size 8 × 8 and the exit 𝐸 is at square 61. 
 
-![An example maze](https://github.com/kieuconghau/search-strategies/blob/master/18127259/INPUT/maze_0.png)
+<p align="center"><img align='center' src="https://github.com/kieuconghau/search-strategies/blob/master/18127259/INPUT/maze_0.png"></p>
 
 Let's use our AI knowledge to help the robot search its path out of the maze. You are asked to implement the following search strategies and provide their output results.
 - *Breadth-first search*
