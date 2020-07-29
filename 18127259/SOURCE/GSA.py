@@ -78,11 +78,15 @@ Input:  a froniter, a node.state that you want to update
 Return: <update or no update>
 """
 def update(frontier, node):
-    for f_node in frontier.queue:
-        if f_node[1] == node[1] and f_node[0] > node[0] + 1:
-            frontier.get(f_node)
-            frontier.put(node)
-            break
+    temp_frontier = []
+    while frontier.queue:
+        temp_frontier.append(frontier.get())
+
+    for temp_node in temp_frontier:
+        if temp_node[1] == node[1]:
+            if temp_node[0] > node[0]:
+                temp_node = node
+        frontier.put(temp_node)
 
 
 """

@@ -7,7 +7,7 @@ from GBFS import greedy_best_first_search
 from GSA import graph_search_a
 from IOHandle import *
 
-input_file_name = r"../INPUT/maze_3.txt"        # Change your input text file here
+input_file_name = r"../INPUT/maze_0.txt"        # Change your input text file here
 
 graph, start, goal = read_maze(input_file_name)
 
